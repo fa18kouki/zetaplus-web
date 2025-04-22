@@ -31,19 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 浮遊アニメーション - 無効化
-  function applyFloatingAnimation() {
-    // 浮遊アニメーションを適用する
-    const floatingElements = document.querySelectorAll('.floating');
-    
-    floatingElements.forEach((element, index) => {
-      const delay = index * 0.2;
-      const duration = 3 + Math.random() * 2;
-      
-      element.style.animation = `float ${duration}s ease-in-out ${delay}s infinite alternate`;
-    });
-  }
-  
+
   // 新しいアニメーションの適用と管理
   function initTypingEffect() {
     const typingElements = document.querySelectorAll('.typing-effect');

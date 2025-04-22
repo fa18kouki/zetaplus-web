@@ -107,32 +107,17 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--secondary-color);
+  display: block;
+  color: var(--text-color);
   font-weight: 500;
-  position: relative;
-  padding-bottom: 8px; /* 下線とのスペースを調整 */
-  font-family: var(--font-family-heading); /* ナビゲーションにも見出しフォント */
+  padding: 10px 15px;
+  font-size: 1.05rem; /* フォントサイズを大きく */
+  transition: var(--transition);
+  position: relative; /* 下線アニメーションの基準点 */
 }
 
 nav ul li a:hover {
   color: var(--primary-color);
-  transform: translateY(-2px); /* ホバー時に少し上に移動 */
-}
-
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  bottom: 0;
-  left: 0;
-  transition: var(--transition);
-}
-
-nav ul li a:hover::after {
-  width: 100%;
-  background-color: var(--primary-color); /* ホバー時の下線色 */
 }
 
 /* ハンバーガーメニュー（モバイル用） */
@@ -162,6 +147,7 @@ main {
   padding: 120px 0; /* パディングを増やす */
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-content {
@@ -209,32 +195,6 @@ main {
     transform: scale(1.03) rotate(1deg); /* ホバー時に少し拡大・回転 */
 }
 
-/* 装飾要素の追加例 (任意) */
-.hero::before,
-.hero::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(92, 189, 185, 0.1); /* プライマリカラーの薄い色 */
-    z-index: -1;
-    animation: pulse 5s infinite ease-in-out alternate;
-}
-
-.hero::before {
-    width: 200px;
-    height: 200px;
-    top: 10%;
-    left: 5%;
-}
-
-.hero::after {
-    width: 300px;
-    height: 300px;
-    bottom: 15%;
-    right: 10%;
-    animation-delay: 1s;
-}
-
 /* セクションスタイル */
 .section {
   padding: 100px 0; /* パディングを増やす */
@@ -259,15 +219,6 @@ main {
   max-width: 650px; /* 最大幅を広げる */
   margin: 0 auto;
   font-size: 1.1rem; /* 説明文を少し大きく */
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  width: 60px; /* 下線を長く */
-  height: 4px; /* 下線を太く */
-  background-color: var(--primary-color);
-  bottom: -20px; /* 位置調整 */
 }
 
 /* サービスセクションスタイル */
@@ -380,6 +331,9 @@ main {
 
 /* 特徴セクションスタイル */
 .features {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--light-color) 0%, var(--accent-color) 100%); /* 背景グラデーション反転 */
 }
 
@@ -566,16 +520,6 @@ footer {
   font-family: var(--font-family-heading);
 }
 
-.footer-links h3::after {
-  content: '';
-  position: absolute;
-  width: 35px; /* 下線調整 */
-  height: 3px; /* 下線調整 */
-  background-color: var(--primary-color);
-  bottom: -8px;
-  left: 0;
-}
-
 .footer-links ul {
   list-style: none;
 }
@@ -585,29 +529,16 @@ footer {
 }
 
 .footer-links ul li a {
-  color: #ccc;
-  transition: var(--transition);
-  position: relative; /* ::before用 */
-  padding-left: 0; /* 初期状態 */
-}
-
-.footer-links ul li a::before {
-    content: '>';
-    position: absolute;
-    left: -15px;
-    opacity: 0;
-    color: var(--primary-color);
-    transition: all 0.3s ease;
+  color: #f0f0f0;
+  display: block;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .footer-links ul li a:hover {
   color: var(--primary-color);
   padding-left: 10px; /* ホバー時に右にずらす */
-}
-
-.footer-links ul li a:hover::before {
-    left: -5px;
-    opacity: 1;
 }
 
 .footer-bottom {
@@ -802,11 +733,6 @@ section > .container {
       display: block; /* ブロック要素にして幅を持たせる */
   }
   
-  nav ul li a::after {
-      height: 2px; /* 下線高さ */
-      background-color: var(--primary-color);
-  }
-  
   .menu-toggle.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px); /* Xの位置調整 */
   }
@@ -937,23 +863,26 @@ section > .container {
       margin-top: 3px;
   }
   
-  .footer-links h3::after {
-      left: 50%; /* 中央に */
-      transform: translateX(-50%);
-  }
-  
   .footer-links ul {
       padding-left: 0;
   }
   .footer-links ul li a:hover {
       padding-left: 0; /* スマホではずらす効果をなくす */
   }
-  .footer-links ul li a::before {
-      display: none; /* スマホでは > を非表示 */
-  }
   
   /* 小さい画面でのアニメーション調整 */
   .scroll-animate, .fade-in {
     transition-duration: 0.6s;
   }
+}
+
+/* パーティクルキャンバススタイル */
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }

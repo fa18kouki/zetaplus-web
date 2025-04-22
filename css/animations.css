@@ -94,15 +94,6 @@
   max-height: 1000px;
 }
 
-.faq-item .faq-toggle::before {
-  content: '+';
-  transition: transform 0.3s ease;
-}
-
-.faq-item.active .faq-toggle::before {
-  transform: rotate(45deg);
-}
-
 /* パララックス効果 */
 .parallax {
   will-change: transform;
@@ -132,11 +123,6 @@
 
 .scroll-top:hover {
   background-color: var(--primary-dark);
-}
-
-.scroll-top::before {
-  content: '↑';
-  font-size: 20px;
 }
 
 /* インタラクティブ要素のホバーエフェクト */
@@ -297,24 +283,6 @@
   overflow: hidden;
 }
 
-.gradient-bg::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    rgba(92, 189, 185, 0.1) 0%,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0) 70%,
-    rgba(92, 189, 185, 0.1) 100%
-  );
-  animation: rotate 20s linear infinite;
-  z-index: -1;
-}
-
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -330,24 +298,6 @@
   overflow: hidden;
 }
 
-.glowing::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  opacity: 0;
-  animation: glow 6s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
 @keyframes glow {
   0%, 100% { opacity: 0; transform: scale(0.5); }
   50% { opacity: 0.05; transform: scale(1); }
@@ -357,24 +307,6 @@
 .text-highlight {
   position: relative;
   display: inline-block;
-}
-
-.text-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background-color: rgba(92, 189, 185, 0.2);
-  z-index: -1;
-  transform-origin: bottom;
-  transform: scaleY(0);
-  transition: transform 0.6s ease;
-}
-
-.text-highlight.animated::after {
-  transform: scaleY(1);
 }
 
 /* タイピングアニメーション */
@@ -407,7 +339,7 @@
 
 .bounce {
   animation: bounce 2s ease infinite;
-  animation-delay: 0.5s;
+  animation-delay: 1.5s;
 }
 
 /* 回転アニメーション */
@@ -437,16 +369,3 @@
   opacity: 0;
   animation: fadeZoomIn 1.2s ease-out forwards;
 }
-
-/* 浮き上がりシェイクアニメーション */
-@keyframes floatShake {
-  0% { transform: translateY(0) rotate(0); }
-  25% { transform: translateY(-10px) rotate(-5deg); }
-  50% { transform: translateY(-15px) rotate(0); }
-  75% { transform: translateY(-10px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(0); }
-}
-
-.float-shake {
-  animation: floatShake 4s ease-in-out infinite;
-} 
