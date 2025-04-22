@@ -1,0 +1,452 @@
+/* 株式会社ゼータプラス Webサイト パターン1: モダンでシンプルなデザイン - アニメーション */
+
+/* 浮遊アニメーション */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+.floating {
+  will-change: transform;
+}
+
+/* パーティクルキャンバススタイル */
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* スクロールアニメーションの基本 */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-animate.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* フェードイン */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.animated {
+  opacity: 1;
+}
+
+/* 並列レイアウト要素のアニメーション順序 */
+.feature-item:nth-child(1),
+.service-card:nth-child(1),
+.team-member:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.feature-item:nth-child(2),
+.service-card:nth-child(2),
+.team-member:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.feature-item:nth-child(3),
+.service-card:nth-child(3),
+.team-member:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.feature-item:nth-child(4),
+.service-card:nth-child(4),
+.team-member:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+/* FAQ アコーディオンアニメーション */
+.faq-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.faq-item.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 1000px;
+}
+
+.faq-item .faq-toggle::before {
+  content: '+';
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle::before {
+  transform: rotate(45deg);
+}
+
+/* パララックス効果 */
+.parallax {
+  will-change: transform;
+}
+
+/* スクロールトップボタン */
+.scroll-top {
+  position: fixed;
+  bottom: -60px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  transition: bottom 0.3s ease-in-out, background-color 0.3s;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-top.visible {
+  bottom: 30px;
+}
+
+.scroll-top:hover {
+  background-color: var(--primary-dark);
+}
+
+.scroll-top::before {
+  content: '↑';
+  font-size: 20px;
+}
+
+/* インタラクティブ要素のホバーエフェクト */
+.btn,
+.service-card,
+.feature-item,
+.team-member,
+.contact-info-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover,
+.service-card:hover,
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:hover,
+.contact-info-item:hover {
+  transform: translateY(-3px);
+}
+
+/* ロゴが回転するアニメーション（フッターなどで使用） */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-spin {
+  animation: spin 15s linear infinite;
+  transform-origin: center center;
+}
+
+/* 波の装飾アニメーション */
+.wave-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 1;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.8);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.wave-decoration svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 49px;
+  transform: rotateY(180deg);
+}
+
+.wave-decoration .shape-fill {
+  fill: #FFFFFF;
+}
+
+.wave-animation {
+  width: 200%;
+  animation: wave 25s linear infinite;
+  will-change: transform;
+}
+
+/* スライドインアニメーション */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-left.animated,
+.slide-in-right.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ホバーエフェクト強化 */
+.service-card.hover-effect,
+.feature-item.hover-effect {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: var(--shadow-hover);
+  z-index: 1;
+}
+
+.feature-item.hover-effect .feature-icon {
+  transform: rotate(25deg) scale(1.2);
+  background-color: var(--secondary-color);
+}
+
+/* アニメーション強化 */
+.hero-content .hero-text {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hero-content .hero-image {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s;
+}
+
+.hero-content .hero-text.animated,
+.hero-content .hero-image.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* サービスカードアニメーション */
+.service-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 特徴アイテムアニメーション */
+.feature-item {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feature-item.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 背景グラデーションアニメーション */
+.gradient-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(92, 189, 185, 0.1) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(92, 189, 185, 0.1) 100%
+  );
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 光の点滅効果 */
+.glowing {
+  position: relative;
+  overflow: hidden;
+}
+
+.glowing::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  animation: glow 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.05; transform: scale(1); }
+}
+
+/* テキスト装飾アニメーション */
+.text-highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.text-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-color: rgba(92, 189, 185, 0.2);
+  z-index: -1;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  transition: transform 0.6s ease;
+}
+
+.text-highlight.animated::after {
+  transform: scaleY(1);
+}
+
+/* タイピングアニメーション */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary-color) }
+}
+
+.typing-effect {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--primary-color);
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* バウンスアニメーション */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}
+}
+
+.bounce {
+  animation: bounce 2s ease infinite;
+  animation-delay: 0.5s;
+}
+
+/* 回転アニメーション */
+@keyframes rotate360 {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.rotate360 {
+  animation: rotate360 15s linear infinite;
+  transform-origin: center;
+}
+
+/* フェードズームインアニメーション */
+@keyframes fadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-zoom-in {
+  opacity: 0;
+  animation: fadeZoomIn 1.2s ease-out forwards;
+}
+
+/* 浮き上がりシェイクアニメーション */
+@keyframes floatShake {
+  0% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(-15px) rotate(0); }
+  75% { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+.float-shake {
+  animation: floatShake 4s ease-in-out infinite;
+} 

@@ -1,0 +1,959 @@
+/* 株式会社ゼータプラス Webサイト パターン1: モダンでシンプルなデザイン */
+
+/* アニメーションスタイルを読み込み */
+@import url('animations.css');
+
+:root {
+  --primary-color: #5cbdb9; /* ロゴの水色（ティール）カラー */
+  --secondary-color: #333333; /* 黒色 */
+  --accent-color: #f8f8f8; /* アクセントカラー（薄いグレー） */
+  --text-color: #333333; /* テキストカラー */
+  --light-color: #ffffff; /* 白色 */
+  --font-family-base: 'Zen Kaku Gothic New', sans-serif; /* 基本フォント */
+  --font-family-heading: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; /* 見出しフォント (日本語も考慮) */
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* 共通シャドウを少し強調 */
+  --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.12); /* ホバー時のシャドウ */
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* スムーズなトランジション */
+  --border-radius: 6px; /* 共通ボーダーラジウスを少し丸く */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  color: var(--text-color);
+  line-height: 1.7;
+  background-color: var(--light-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--secondary-color);
+  opacity: 0.8; /* ホバー時に少し透明度を調整 */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ヘッダースタイル */
+header {
+  background-color: rgba(255, 255, 255, 0.95); /* 少し透明度を持たせる */
+  backdrop-filter: blur(10px); /* 背景をぼかす効果 (モダンブラウザ向け) */
+  box-shadow: var(--shadow);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px; /* 横パディングを追加 */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-symbol, .footer-logo-symbol {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  border-radius: var(--border-radius);
+  object-fit: contain;
+  background: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.footer-logo-symbol {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.6rem; /* 少し大きく */
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-family: var(--font-family-heading); /* 見出しフォント適用 */
+}
+
+/* ナビゲーションスタイル */
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 35px; /* 間隔を少し広げる */
+}
+
+nav ul li a {
+  color: var(--secondary-color);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 8px; /* 下線とのスペースを調整 */
+  font-family: var(--font-family-heading); /* ナビゲーションにも見出しフォント */
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px); /* ホバー時に少し上に移動 */
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  transition: var(--transition);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+  background-color: var(--primary-color); /* ホバー時の下線色 */
+}
+
+/* ハンバーガーメニュー（モバイル用） */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 28px; /* 少し太く */
+  height: 3px;
+  margin: 6px auto; /* 間隔を調整 */
+  background-color: var(--secondary-color);
+  transition: var(--transition);
+}
+
+/* メインコンテンツスタイル */
+main {
+  margin-top: 85px; /* ヘッダーの高さに応じて調整 */
+  min-height: calc(100vh - 80px - 100px); /* ヘッダーとフッターの高さを考慮 */
+}
+
+/* ヒーローセクションスタイル */
+.hero {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--light-color) 100%); /* グラデーション背景 */
+  padding: 120px 0; /* パディングを増やす */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px; /* 要素間のギャップを増やす */
+}
+
+.hero-text {
+  flex: 1;
+  animation: slideInLeft 1s ease-out forwards; /* 左からスライドイン */
+}
+
+.hero-title {
+  font-size: 3rem; /* タイトルを大きく */
+  margin-bottom: 25px;
+  color: var(--secondary-color);
+  line-height: 1.3; /* 行間を調整 */
+  font-family: var(--font-family-heading);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem; /* サブタイトルを少し大きく */
+  margin-bottom: 40px;
+  color: #555; /* 少し濃く */
+}
+
+.hero-image {
+  flex: 1;
+  text-align: center; /* 中央揃え */
+  animation: fadeIn 1.2s ease-out 0.3s forwards; /* 遅れてフェードイン */
+  position: relative; /* アニメーション要素の基準点 */
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto; /* アスペクト比を維持 */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-hover); /* 強めのシャドウ */
+  transition: transform 0.5s ease; /* ホバーエフェクト用 */
+}
+
+.hero-image:hover img {
+    transform: scale(1.03) rotate(1deg); /* ホバー時に少し拡大・回転 */
+}
+
+/* 装飾要素の追加例 (任意) */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(92, 189, 185, 0.1); /* プライマリカラーの薄い色 */
+    z-index: -1;
+    animation: pulse 5s infinite ease-in-out alternate;
+}
+
+.hero::before {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 5%;
+}
+
+.hero::after {
+    width: 300px;
+    height: 300px;
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+/* セクションスタイル */
+.section {
+  padding: 100px 0; /* パディングを増やす */
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 70px; /* マージンを増やす */
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2.2rem; /* タイトルを大きく */
+  color: var(--secondary-color);
+  display: inline-block;
+  margin-bottom: 15px;
+  font-family: var(--font-family-heading);
+}
+
+.section-title p {
+  color: #666;
+  max-width: 650px; /* 最大幅を広げる */
+  margin: 0 auto;
+  font-size: 1.1rem; /* 説明文を少し大きく */
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 60px; /* 下線を長く */
+  height: 4px; /* 下線を太く */
+  background-color: var(--primary-color);
+  bottom: -20px; /* 位置調整 */
+}
+
+/* サービスセクションスタイル */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* カード最小幅調整 */
+  gap: 40px; /* ギャップを増やす */
+}
+
+.service-card {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition), transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+  position: relative; /* アニメーションの基準 */
+  background-color: var(--light-color);
+}
+
+.service-card:hover {
+  transform: translateY(-10px); /* 浮き上がりを大きく */
+  box-shadow: var(--shadow-hover); /* ホバー時のシャドウ */
+}
+
+.service-image {
+  height: 220px; /* 画像高さを調整 */
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.1); /* ホバー時の画像拡大を大きく */
+  filter: brightness(0.9); /* 少し暗くしてテキストを際立たせる */
+}
+
+.service-content {
+  padding: 30px; /* パディングを増やす */
+}
+
+.service-title {
+  font-size: 1.4rem; /* タイトルを大きく */
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+  transition: color 0.3s ease; /* タイトル色変化 */
+  font-family: var(--font-family-heading);
+}
+
+.service-card:hover .service-title {
+    color: var(--primary-color); /* ホバー時にタイトル色を変更 */
+}
+
+.service-description {
+  margin-bottom: 25px; /* マージンを増やす */
+  color: #666;
+}
+
+/* ボタンスタイル */
+.btn {
+  display: inline-block;
+  padding: 14px 35px; /* パディングを増やす */
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+  font-weight: 600; /* 少し太く */
+  text-align: center;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase; /* 大文字に */
+  letter-spacing: 0.5px; /* 文字間隔 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ボタンにも影 */
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  transform: translateY(-4px); /* 浮き上がりを大きく */
+  box-shadow: var(--shadow-hover); /* ホバー時の影を強く */
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: none; /* アウトラインボタンは影なし */
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  transform: translateY(-4px); /* 浮き上がりを大きく */
+  box-shadow: 0 6px 12px rgba(92, 189, 185, 0.3); /* プライマリカラーの影 */
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary:hover {
+  background-color: #444;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 特徴セクションスタイル */
+.features {
+  background: linear-gradient(135deg, var(--light-color) 0%, var(--accent-color) 100%); /* 背景グラデーション反転 */
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px; /* マージンを増やす */
+  padding: 20px; /* 内側にパディング追加 */
+  border-radius: var(--border-radius);
+  transition: var(--transition), transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+}
+
+.feature-item:hover {
+    background-color: rgba(92, 189, 185, 0.05); /* ホバー時に薄く色付け */
+    transform: translateX(5px); /* 右に少し移動 */
+}
+
+.feature-icon {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  width: 65px; /* 少し大きく */
+  height: 65px; /* 少し大きく */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem; /* アイコンサイズ調整 */
+  margin-right: 25px; /* マージン調整 */
+  flex-shrink: 0;
+  transition: transform 0.5s ease, background-color 0.5s ease; /* アニメーション追加 */
+}
+
+.feature-item:hover .feature-icon {
+    transform: rotate(15deg) scale(1.1); /* ホバー時に回転・拡大 */
+    background-color: var(--secondary-color); /* ホバー時に色変更 */
+}
+
+.feature-content h3 {
+  font-size: 1.4rem; /* 少し大きく */
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-family: var(--font-family-heading);
+}
+
+/* お問い合わせセクションスタイル */
+.contact-section {
+  background-color: var(--light-color);
+}
+
+.contact-container {
+  display: flex;
+  gap: 50px; /* ギャップを増やす */
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h3 {
+  font-size: 1.6rem; /* 少し大きく */
+  margin-bottom: 25px;
+  color: var(--secondary-color);
+  font-family: var(--font-family-heading);
+}
+
+.contact-detail {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px; /* マージン調整 */
+  transition: transform 0.3s ease;
+}
+
+.contact-detail:hover {
+    transform: translateX(5px); /* ホバー時に右に移動 */
+}
+
+.contact-icon {
+  color: var(--primary-color);
+  font-size: 1.4rem; /* アイコンサイズ調整 */
+  margin-right: 20px; /* マージン調整 */
+  margin-top: 5px;
+  width: 30px; /* アイコン幅固定 */
+  text-align: center;
+}
+
+.contact-text h4 {
+  font-size: 1.2rem; /* 少し大きく */
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+  font-family: var(--font-family-heading);
+}
+
+.contact-form {
+  flex: 1.2; /* フォームエリアを少し広く */
+}
+
+.form-group {
+  margin-bottom: 25px; /* マージン調整 */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px; /* マージン調整 */
+  font-weight: 500;
+  font-family: var(--font-family-heading); /* ラベルにも適用 */
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 18px; /* パディング調整 */
+  border: 1px solid #ccc; /* ボーダー色を少し濃く */
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-base); /* 入力欄は基本フォント */
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: #fdfdfd; /* 背景色を少し変える */
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(92, 189, 185, 0.25); /* フォーカス時の影を強調 */
+  background-color: var(--light-color);
+}
+
+textarea.form-control {
+  min-height: 160px; /* 高さを調整 */
+  resize: vertical;
+}
+
+/* フッタースタイル */
+footer {
+  background-color: var(--secondary-color);
+  color: #e0e0e0; /* テキスト色を少し明るく */
+  padding: 80px 0 30px; /* パディング調整 */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px; /* ギャップを増やす */
+}
+
+.footer-info h3 {
+  font-size: 1.4rem; /* 少し大きく */
+  margin-bottom: 25px;
+  color: var(--light-color);
+  font-family: var(--font-family-heading);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px; /* マージン調整 */
+  opacity: 0.9; /* 少し透明度 */
+}
+
+.footer-logo-text {
+  font-size: 1.3rem; /* 少し大きく */
+  font-weight: bold;
+  color: var(--light-color);
+  font-family: var(--font-family-heading); /* フッターロゴにも */
+}
+
+.footer-contact p {
+  margin-bottom: 15px; /* マージン調整 */
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-contact i {
+  color: var(--primary-color);
+  margin-right: 15px; /* マージン調整 */
+  margin-top: 5px;
+  width: 20px; /* アイコン幅固定 */
+  text-align: center;
+}
+
+.footer-links h3 {
+  font-size: 1.4rem; /* 少し大きく */
+  margin-bottom: 25px;
+  color: var(--light-color);
+  position: relative;
+  font-family: var(--font-family-heading);
+}
+
+.footer-links h3::after {
+  content: '';
+  position: absolute;
+  width: 35px; /* 下線調整 */
+  height: 3px; /* 下線調整 */
+  background-color: var(--primary-color);
+  bottom: -8px;
+  left: 0;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links ul li {
+  margin-bottom: 12px; /* マージン調整 */
+}
+
+.footer-links ul li a {
+  color: #ccc;
+  transition: var(--transition);
+  position: relative; /* ::before用 */
+  padding-left: 0; /* 初期状態 */
+}
+
+.footer-links ul li a::before {
+    content: '>';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: var(--primary-color);
+  padding-left: 10px; /* ホバー時に右にずらす */
+}
+
+.footer-links ul li a:hover::before {
+    left: -5px;
+    opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 40px; /* パディング調整 */
+  margin-top: 40px; /* マージン調整 */
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* ボーダー色調整 */
+  font-size: 0.9rem; /* フォントサイズ調整 */
+  color: #aaa; /* 色調整 */
+}
+
+/* アニメーション */
+/* フェードイン */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 左からスライドイン */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 右からスライドイン */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 下からスライドアップ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ズームイン */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* パルスアニメーション (ヒーロー背景用) */
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.1; }
+    70% { transform: scale(1.1); opacity: 0.2; }
+    100% { transform: scale(0.95); opacity: 0.1; }
+}
+
+/* スクロールアニメーション用の基本クラス */
+.scroll-animate, .fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-animate.animated, .fade-in.animated {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* パーティクルの基本スタイル */
+.particle-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* セクションの相対位置を設定 */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* セクションの内容を前面に */
+section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 遅延クラスは維持 */
+.delay-1 {
+  transition-delay: 0.2s;
+}
+
+.delay-2 {
+  transition-delay: 0.4s;
+}
+
+.delay-3 {
+  transition-delay: 0.6s;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center; /* 中央揃え */
+  }
+  
+  .hero-text {
+    flex: none;
+    width: 100%;
+    text-align: center;
+    animation: slideInUp 1s ease-out forwards; /* アニメーション変更 */
+  }
+  
+  .hero-image {
+    flex: none;
+    width: 80%; /* 少し小さく */
+    margin-top: 40px; /* 上マージン追加 */
+    animation: zoomIn 1.2s ease-out 0.3s forwards; /* アニメーション変更 */
+  }
+  
+  .contact-container {
+    flex-direction: column;
+  }
+  
+  .contact-form {
+    flex: 1; /* 幅リセット */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    z-index: 1001; /* ナビゲーションより手前に */
+    position: relative; /* トグルアニメーションのため */
+    margin-right: 10px; /* 右側に少し余白 */
+  }
+  
+  nav ul {
+    position: fixed;
+    top: 0; /* ヘッダーの上から */
+    left: -100%;
+    width: 80%; /* 画面幅の80% */
+    max-width: 300px; /* 最大幅 */
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98); /* 背景色 */
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    align-items: flex-start; /* 左揃え */
+    justify-content: flex-start;
+    padding: 100px 30px 30px; /* 上にスペース、左右パディング */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* スムーズな動き */
+    z-index: 1000; /* ヘッダーのすぐ下 */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* 右側に影 */
+    transform: translateX(-100%);
+  }
+  
+  nav ul.active {
+    left: 0;
+    transform: translateX(0); /* 左から表示 */
+  }
+  
+  nav ul li {
+    margin: 0 0 25px 0; /* 下マージンのみ */
+    width: 100%; /* 幅いっぱい */
+  }
+  
+  nav ul li a {
+      font-size: 1.1rem; /* 文字サイズ調整 */
+      padding-bottom: 10px; /* 下線とのスペース */
+      display: block; /* ブロック要素にして幅を持たせる */
+  }
+  
+  nav ul li a::after {
+      height: 2px; /* 下線高さ */
+      background-color: var(--primary-color);
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px); /* Xの位置調整 */
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scale(0); /* 縮小して消える */
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -7px); /* X,Yの位置調整 */
+  }
+  
+  main {
+    margin-top: 70px; /* ヘッダー高さに合わせて調整 */
+  }
+  
+  .section {
+    padding: 80px 0; /* パディング調整 */
+  }
+  
+  .section-title h2 {
+    font-size: 2rem; /* タイトルサイズ調整 */
+  }
+  
+  .hero {
+    padding: 80px 0; /* パディング調整 */
+  }
+  
+  .hero-title {
+    font-size: 2.5rem; /* タイトルサイズ調整 */
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .feature-icon {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  /* モバイルでのパーティクル調整 */
+  .particle-canvas {
+    opacity: 0.5;
+  }
+  
+  /* モバイルでの浮遊アニメーション調整 */
+  .floating {
+    animation-duration: 2s;
+  }
+  
+  /* スクロールトップボタン位置調整 */
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header-container {
+    padding: 10px 15px; /* パディング調整 */
+  }
+  
+  .logo-symbol {
+    width: 45px; /* サイズ調整 */
+    height: 45px; /* サイズ調整 */
+    margin-right: 10px; /* マージン調整 */
+  }
+  
+  .logo-text {
+    font-size: 1.3rem; /* サイズ調整 */
+  }
+  
+  .hero {
+      padding: 60px 0;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem; /* サイズ調整 */
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem; /* サイズ調整 */
+  }
+  
+  .btn {
+    padding: 12px 25px; /* パディング調整 */
+    font-size: 1rem; /* サイズ調整 */
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem; /* サイズ調整 */
+  }
+  
+  .section-title p {
+    font-size: 1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr; /* 1カラムに */
+    gap: 30px; /* ギャップ調整 */
+  }
+  
+  .service-card {
+      text-align: center;
+  }
+  
+  .service-image {
+      height: 200px;
+  }
+  
+  .footer-container {
+      grid-template-columns: 1fr; /* 1カラムに */
+      text-align: center; /* 中央揃え */
+  }
+  
+  .footer-logo, .footer-contact p {
+      justify-content: center; /* 中央揃え */
+  }
+  
+  .footer-contact i {
+      margin-right: 8px;
+      margin-top: 3px;
+  }
+  
+  .footer-links h3::after {
+      left: 50%; /* 中央に */
+      transform: translateX(-50%);
+  }
+  
+  .footer-links ul {
+      padding-left: 0;
+  }
+  .footer-links ul li a:hover {
+      padding-left: 0; /* スマホではずらす効果をなくす */
+  }
+  .footer-links ul li a::before {
+      display: none; /* スマホでは > を非表示 */
+  }
+  
+  /* 小さい画面でのアニメーション調整 */
+  .scroll-animate, .fade-in {
+    transition-duration: 0.6s;
+  }
+}
