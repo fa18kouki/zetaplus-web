@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.png">
   <title>会社ポリシー | 株式会社ゼータプラス</title>
   <meta name="description" content="株式会社ゼータプラスの会社ポリシーについてご紹介します。私たちは「車のことならゼータプラス」をモットーに、お客様の快適なカーライフをサポートいたします。">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/particles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <!-- ヘッダー -->
@@ -27,11 +36,11 @@
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </nav>
-      <div class="menu-toggle">
+      <button type="button" class="menu-toggle" aria-label="メニューを開く">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -44,50 +53,42 @@
         <p class="hero-subtitle" style="text-align: center;">私たちの理念と取り組みについてご紹介します。</p>
       </div>
     </section>
-
-    <!-- 企業理念セクション -->
-    <section class="section">
+    <!-- 個人情報保護方針セクション -->
+    <section class="section features">
       <div class="container">
         <div class="section-title">
-          <h2 class="text-highlight">企業理念</h2>
-          <p>私たちが大切にしている価値観をご紹介します。</p>
+          <h2>個人情報保護方針</h2>
+          <p>お客様の個人情報保護に関する基本方針をご紹介します。</p>
         </div>
-        <div class="policy-content" style="max-width: 800px; margin: 0 auto;">
-          <div class="policy-item scroll-animate fade-in-up" style="margin-bottom: 40px; text-align: center;">
-            <div style="font-size: 1.8rem; font-weight: bold; color: var(--primary-color); margin-bottom: 20px;" class="floating">
-              「車のことならゼータプラス」
-            </div>
-            <p style="font-size: 1.1rem; line-height: 1.8;">
-              私たちは、お客様の快適なカーライフをトータルでサポートすることを使命としています。<br>
-              車に関するあらゆるニーズにお応えし、お客様に最高の満足と安心を提供します。
-            </p>
-          </div>
-          
-          <div class="policy-values" style="margin-top: 60px;">
-            <h3 style="text-align: center; margin-bottom: 30px; color: var(--secondary-color);">3つの価値観</h3>
+        <div class="privacy-policy" style="max-width: 800px; margin: 0 auto;">
+          <div class="policy-item scroll-animate fade-in-up" style="margin-bottom: 40px;">
+            <p style="margin-bottom: 20px;">株式会社ゼータプラス（以下、「当社」といいます）は、個人情報の重要性を認識し、適切に保護することが社会的責務であると考え、以下の取り組みを実施してまいります。</p>
             
-            <div class="policy-value-item scroll-animate fade-in-left" style="display: flex; align-items: flex-start; margin-bottom: 30px;">
-              <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 20px; flex-shrink: 0;" class="floating">1</div>
-              <div>
-                <h4 style="margin-bottom: 10px; color: var(--secondary-color);">お客様第一主義</h4>
-                <p>私たちはお客様のニーズを最優先に考え、常にお客様の立場に立ったサービスを提供します。お客様の声に真摯に耳を傾け、期待を超える価値を創造することを目指しています。</p>
-              </div>
-            </div>
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">1. 個人情報の取得について</h3>
+            <p style="margin-bottom: 20px;">当社は、適法かつ公正な手段によって個人情報を取得いたします。</p>
             
-            <div class="policy-value-item scroll-animate fade-in-left delay-1" style="display: flex; align-items: flex-start; margin-bottom: 30px;">
-              <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 20px; flex-shrink: 0;" class="floating">2</div>
-              <div>
-                <h4 style="margin-bottom: 10px; color: var(--secondary-color);">プロフェッショナリズム</h4>
-                <p>私たちは自動車業界のプロフェッショナルとして、常に最新の知識と技術を追求します。高い専門性と誠実さをもって、お客様に安心と信頼を提供します。</p>
-              </div>
-            </div>
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">2. 個人情報の利用目的</h3>
+            <p style="margin-bottom: 20px;">当社は、取得した個人情報を、商品・サービスの提供、アフターサービス、各種お問い合わせへの対応など、業務上必要な範囲内でのみ利用いたします。</p>
             
-            <div class="policy-value-item scroll-animate fade-in-left delay-2" style="display: flex; align-items: flex-start; margin-bottom: 30px;">
-              <div style="background-color: var(--primary-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 20px; flex-shrink: 0;" class="floating">3</div>
-              <div>
-                <h4 style="margin-bottom: 10px; color: var(--secondary-color);">地域社会への貢献</h4>
-                <p>私たちは地域社会の一員として、環境に配慮した事業活動を行い、地域の発展に貢献します。お客様、従業員、地域社会との共存共栄を目指しています。</p>
-              </div>
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">3. 個人情報の安全管理</h3>
+            <p style="margin-bottom: 20px;">当社は、個人情報の漏洩、滅失またはき損を防止するため、適切な安全管理措置を講じます。また、従業員に対し、個人情報の安全管理に関する教育を実施します。</p>
+            
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">4. 個人情報の第三者提供</h3>
+            <p style="margin-bottom: 20px;">当社は、法令に基づく場合を除き、本人の同意なく個人情報を第三者に提供いたしません。</p>
+            
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">5. 個人情報の開示・訂正・利用停止</h3>
+            <p style="margin-bottom: 20px;">当社は、本人から自己の個人情報について開示・訂正・利用停止の請求があった場合、本人確認の上、適切に対応いたします。</p>
+            
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">6. 法令・規範の遵守</h3>
+            <p style="margin-bottom: 20px;">当社は、個人情報に関する法令およびその他の規範を遵守いたします。</p>
+            
+            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">7. 継続的改善</h3>
+            <p style="margin-bottom: 20px;">当社は、個人情報保護に関する取り組みを継続的に見直し、改善いたします。</p>
+            
+            <div style="text-align: center; margin-top: 40px;">
+              <a href="policy/個人情報保護にかんする基本方針.pdf" class="btn" download>
+                <i class="fas fa-download" style="margin-right: 8px;"></i>個人情報保護方針のダウンロード
+              </a>
             </div>
           </div>
         </div>
@@ -95,7 +96,7 @@
     </section>
 
     <!-- 会社概要セクション -->
-    <section class="section features">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2>会社概要</h2>
@@ -113,11 +114,11 @@
             </tr>
             <tr>
               <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">電話番号</th>
-              <td style="padding: 15px; border-bottom: 1px solid #ddd;">052-XXX-XXXX</td>
+              <td style="padding: 15px; border-bottom: 1px solid #ddd;">052-659-1001</td>
             </tr>
             <tr>
               <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">FAX</th>
-              <td style="padding: 15px; border-bottom: 1px solid #ddd;">052-XXX-XXXX</td>
+              <td style="padding: 15px; border-bottom: 1px solid #ddd;">052-659-1009</td>
             </tr>
             <tr>
               <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">メールアドレス</th>
@@ -143,37 +144,6 @@
               </td>
             </tr>
           </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- 取り組みセクション -->
-    <section class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>私たちの取り組み</h2>
-          <p>お客様に安心と満足をお届けするための取り組みをご紹介します。</p>
-        </div>
-        <div class="initiatives" style="max-width: 800px; margin: 0 auto;">
-          <div class="initiative-item scroll-animate fade-in-up" style="margin-bottom: 40px;">
-            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">品質へのこだわり</h3>
-            <p>私たちは、取り扱う車両の品質に妥協しません。中古車は厳しい品質基準をクリアした車両のみを販売し、整備・点検も熟練のスタッフが丁寧に行います。お客様に安心してお乗りいただける車を提供することが、私たちの誇りです。</p>
-          </div>
-          
-          <div class="initiative-item scroll-animate fade-in-up delay-1" style="margin-bottom: 40px;">
-            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">スタッフ教育</h3>
-            <p>私たちは、スタッフの技術力と知識の向上に力を入れています。定期的な研修や勉強会を実施し、最新の自動車技術や整備方法を学んでいます。また、お客様対応においても、常に誠実で丁寧なサービスを心がけています。</p>
-          </div>
-          
-          <div class="initiative-item scroll-animate fade-in-up delay-2" style="margin-bottom: 40px;">
-            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">環境への配慮</h3>
-            <p>私たちは、環境に配慮した事業活動を行っています。廃油や廃部品の適正処理はもちろん、エコカーの普及促進や省エネルギー設備の導入など、環境負荷の低減に取り組んでいます。次世代に美しい地球を残すため、私たちができることを実践しています。</p>
-          </div>
-          
-          <div class="initiative-item scroll-animate fade-in-up delay-3" style="margin-bottom: 40px;">
-            <h3 style="margin-bottom: 15px; color: var(--secondary-color); border-left: 4px solid var(--primary-color); padding-left: 15px;">地域貢献活動</h3>
-            <p>私たちは、地域社会の一員として、様々な地域貢献活動に参加しています。地域の清掃活動や交通安全イベントへの協力、子どもたちへの交通安全教育など、地域の皆様とともに歩む企業を目指しています。</p>
-          </div>
         </div>
       </div>
     </section>
@@ -205,7 +175,7 @@
       <div class="footer-contact">
         <h3>お問い合わせ</h3>
         <p><i class="fas fa-map-marker-alt"></i> 〒455-0055 愛知県名古屋市港区品川町2-49-1</p>
-        <p><i class="fas fa-phone-alt"></i> 052-XXX-XXXX</p>
+        <p><i class="fas fa-phone-alt"></i> 052-659-1001</p>
         <p><i class="fas fa-envelope"></i> info@zetaplus.co.jp</p>
         <p><i class="fas fa-clock"></i> 平日: 9:00 - 18:00 / 土曜: 9:00 - 17:00</p>
       </div>
@@ -224,8 +194,10 @@
       <p>&copy; 2025 株式会社ゼータプラス. All Rights Reserved.</p>
     </div>
   </footer>
-
-  <script src="js/particles.js"></script>
+  
+  <!-- ここからJavaScriptの読み込み -->
   <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/advanced.js"></script>
 </body>
 </html>

@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.png">
   <title>サービス | 株式会社ゼータプラス</title>
   <meta name="description" content="株式会社ゼータプラスのサービス一覧。新車・中古車販売、車検対応、高価買取、外車・輸入車の取り扱い、ボディーコーティング、自動車保険など、車に関するワンストップサービスを提供しています。">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/particles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <!-- ヘッダー -->
@@ -118,35 +127,11 @@
       </div>
     </section>
 
-    <section class="section features" id="import">
-      <div class="container">
-        <div class="section-title">
-          <h2>外車・輸入車の取り扱い</h2>
-          <p>輸入車の販売・整備・修理も当社にお任せください。</p>
-        </div>
-        <div class="service-detail">
-          <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 40px;">
-            <div class="col" style="flex: 1; min-width: 300px;">
-              <h3 style="margin-bottom: 15px; color: var(--secondary-color);">専門知識を持ったスタッフ</h3>
-              <p style="margin-bottom: 20px;">輸入車に精通したスタッフが、適切なアドバイスと整備を提供いたします。各メーカーの特性を理解した対応が可能です。</p>
-              <h3 style="margin-bottom: 15px; color: var(--secondary-color);">純正パーツの調達</h3>
-              <p style="margin-bottom: 20px;">各メーカーの純正パーツを迅速に調達し、最適な整備・修理を行います。</p>
-              <h3 style="margin-bottom: 15px; color: var(--secondary-color);">輸入車販売</h3>
-              <p>人気の輸入車を取り揃えております。ご希望の車種がございましたら、お気軽にご相談ください。</p>
-            </div>
-            <div class="col" style="flex: 1; min-width: 300px;">
-              <img src="images/car5.png" alt="外車・輸入車の取り扱い" style="width: 100%; border-radius: var(--border-radius); box-shadow: var(--shadow);">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="coating">
       <div class="container">
         <div class="section-title">
           <h2>ボディーコーティング</h2>
-          <p>プロの技術による高品質なボディーコーティングを提供しております。</p>
+          <p>高品質なボディーコーティングを提供しております。</p>
         </div>
         <div class="service-detail">
           <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 40px;">
@@ -170,13 +155,14 @@
       <div class="container">
         <div class="section-title">
           <h2>自動車保険の各種取り扱い</h2>
-          <p>お客様に最適な自動車保険をご提案いたします。</p>
+          <p>お客様に最適な自動車保険をご提案いたします。
+          </p>
         </div>
         <div class="service-detail">
           <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 40px;">
             <div class="col" style="flex: 1; min-width: 300px;">
               <h3 style="margin-bottom: 15px; color: var(--secondary-color);">豊富な保険プラン</h3>
-              <p style="margin-bottom: 20px;">各保険会社の商品を取り扱っており、お客様のニーズに合わせた最適なプランをご提案いたします。</p>
+              <p style="margin-bottom: 20px;">取り扱い自動車保険の各種取り扱い(損保ジャパン・東京海上日動)から、お客様のニーズに合わせた最適なプランをご提案いたします。</p>
               <h3 style="margin-bottom: 15px; color: var(--secondary-color);">専門スタッフによる相談</h3>
               <p style="margin-bottom: 20px;">保険のプロフェッショナルが、分かりやすく丁寧にご説明いたします。複雑な保険内容も安心してご相談ください。</p>
               <h3 style="margin-bottom: 15px; color: var(--secondary-color);">事故対応サポート</h3>
@@ -217,7 +203,7 @@
       <div class="footer-contact">
         <h3>お問い合わせ</h3>
         <p><i class="fas fa-map-marker-alt"></i> 〒455-0055 愛知県名古屋市港区品川町2-49-1</p>
-        <p><i class="fas fa-phone-alt"></i> 052-XXX-XXXX</p>
+        <p><i class="fas fa-phone-alt"></i> 052-659-1001</p>
         <p><i class="fas fa-envelope"></i> info@zetaplus.co.jp</p>
         <p><i class="fas fa-clock"></i> 平日: 9:00 - 18:00 / 土曜: 9:00 - 17:00</p>
       </div>
@@ -237,7 +223,9 @@
     </div>
   </footer>
 
-  <script src="js/particles.js"></script>
+  <!-- ここからJavaScriptの読み込み -->
   <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/advanced.js"></script>
 </body>
 </html>

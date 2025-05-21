@@ -4,11 +4,57 @@ document.addEventListener('DOMContentLoaded', function() {
   // ハンバーガーメニューの動作
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.querySelector('nav ul');
+  const body = document.body;
   
   if (menuToggle) {
     menuToggle.addEventListener('click', function() {
       menuToggle.classList.toggle('active');
       navMenu.classList.toggle('active');
+      
+      // メニュー表示時に背景スクロールを防止
+      if (navMenu.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+      } else {
+        body.style.overflow = '';
+      }
+    });
+    
+    // ウィンドウサイズが変わった時にメニューを閉じる
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && menuToggle.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.style.overflow = '';
+      }
+    });
+    
+    // メニュー内のリンクをクリックした時にメニューを閉じる
+    const menuLinks = navMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.style.overflow = '';
+      });
+    });
+    
+    // スクロール時にメニューを閉じる
+    window.addEventListener('scroll', function() {
+      if (menuToggle.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.style.overflow = '';
+      }
+    });
+    
+    // 画面外クリックでメニューを閉じる
+    document.addEventListener('click', function(event) {
+      const isClickInside = navMenu.contains(event.target) || menuToggle.contains(event.target);
+      if (!isClickInside && navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        body.style.overflow = '';
+      }
     });
   }
   
@@ -112,6 +158,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const parallaxElements = document.querySelectorAll('.parallax');
     
     parallaxElements.forEach(element => {
+      // 画像要素の場合はパララックス効果を適用しない（車の画像の動きを停止するため）
+      if (element.tagName.toLowerCase() === 'img') {
+        element.style.transform = 'translateY(0)';
+        return;
+      }
+      
       const speed = element.dataset.parallaxSpeed || 0.2;
       const offset = window.pageYOffset * speed;
       
@@ -182,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 初期化関数
   function initAnimations() {
     checkAnimations();
-    applyFloatingAnimation();
+    // applyFloatingAnimation(); // 車の浮遊アニメーションを無効化
     initTypingEffect();
     randomizeRotations();
     initParticleBackgrounds();

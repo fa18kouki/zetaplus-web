@@ -2,16 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="images/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社ゼータプラス | 車のことならゼータプラス</title>
   <meta name="description" content="株式会社ゼータプラスは、新車・中古車販売、車検対応、高価買取、外車・輸入車の取り扱い、ボディーコーティング、自動車保険など、車に関するワンストップサービスを提供しています。">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/particles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <!-- ヘッダー -->
@@ -29,11 +36,11 @@
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </nav>
-      <div class="menu-toggle">
+      <button type="button" class="menu-toggle" aria-label="メニューを開く">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -44,9 +51,9 @@
       <div class="container hero-content">
         <div class="hero-text scroll-animate fade-in-left">
           <h1 class="hero-title">車のことなら<br><span style="color: var(--primary-color);" class="text-highlight typing-effect">ゼータプラス</span></h1>
-          <p class="hero-subtitle">新車・中古車販売から車検、買取、ボディーコーティングまで、<br>お客様のカーライフをトータルサポートいたします。</p>
+          <p class="hero-subtitle">新車・中古車販売から車検、修理、買取、ボディーコーティングまで、<br>お客様のカーライフをトータルサポートいたします。</p>
           <a href="services.html" class="btn">サービスを見る</a>
-          <a href="contact.html" class="btn btn-outline floating" style="animation-delay: 0.2s;">お問い合わせ</a>
+          <a href="contact.html" class="btn">お問い合わせ</a>
         </div>
         <div class="hero-image scroll-animate fade-in-right">
           <img src="images/car1.png" alt="高級日本車" class="parallax" data-parallax-speed="-0.1">
@@ -94,23 +101,13 @@
           </div>
         </div>
         <div class="services-grid" style="margin-top: 30px;">
-          <div class="service-card scroll-animate fade-in-up">
-            <div class="service-image glowing">
-              <img src="images/car5.png" alt="外車・輸入車の取り扱い">
-            </div>
-            <div class="service-content">
-              <h3 class="service-title">外車・輸入車の取り扱い</h3>
-              <p class="service-description">各種輸入車の販売・整備・修理を行っております。専門知識を持ったスタッフが対応いたします。</p>
-              <a href="services.html#import" class="btn btn-outline">詳しく見る</a>
-            </div>
-          </div>
           <div class="service-card scroll-animate fade-in-up delay-1">
             <div class="service-image glowing">
               <img src="images/car1.png" alt="ボディーコーティング">
             </div>
             <div class="service-content">
               <h3 class="service-title">ボディーコーティング</h3>
-              <p class="service-description">プロの技術による高品質なボディーコーティングを提供しております。お車の美しさと耐久性を保ちます。</p>
+              <p class="service-description">高品質なボディーコーティングを提供しております。お車の美しさと耐久性を保ちます。</p>
               <a href="services.html#coating" class="btn btn-outline">詳しく見る</a>
             </div>
           </div>
@@ -211,8 +208,8 @@
                 お問い合わせ
               </h3>
               <p style="margin-bottom: 20px">
-                電話: 052-XXX-XXXX<br />
-                FAX: 052-XXX-XXXX<br />
+                電話: 052-659-1001<br />
+                FAX: 052-659-1009<br />
                 メール: info@zetaplus.co.jp
               </p>
             </div>
@@ -264,7 +261,8 @@
                 >公共交通機関でお越しの場合
               </h4>
               <p>
-                名古屋市営地下鉄 港区駅より徒歩15分<br />市バス「品川町」バス停より徒歩3分
+                あおなみ線荒子川公園駅より徒歩5分<br />
+                名古屋市バス　荒子川公園駅から徒歩8分
               </p>
             </div>
           </div>
@@ -316,7 +314,7 @@
               >車検にはどのくらいの時間がかかりますか？
             </h3>
             <p>
-              基本的には当日仕上げが可能です。午前中にお持ち込みいただければ、夕方までにはお渡しできる場合がほとんどです。ただし、車両の状態によっては部品の取り寄せなどで数日かかる場合もございます。詳細は事前にお問い合わせください。
+              最短2時間で完了する速やかな車検サービスを提供しております。お急ぎの場合は事前にご相談ください。車両の状態によっては部品の取り寄せなどで数日かかる場合もございますので、お早めのご予約をおすすめします。
             </p>
           </div>
 
@@ -356,7 +354,7 @@
               >ボディーコーティングの持続期間はどのくらいですか？
             </h3>
             <p>
-              当社で施工するボディーコーティングは、グレードによって持続期間が異なります。スタンダードプランで約1年、プレミアムプランで約3年、ハイエンドプランで約5年の持続効果があります。ただし、洗車方法や保管環境によって変動する場合がございます。
+              当社のボディーコーティングは、通常のコーティングで約2年、ガラスコーティングで約3-5年の持続効果があります。定期的なメンテナンスをおすすめします。保管環境や使用状況によって効果が異なる場合がございますので、詳しくはスタッフにお尋ねください。
             </p>
           </div>
 
@@ -378,6 +376,53 @@
           <p>
             その他のご質問がございましたら、お気軽にお問い合わせください。
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- お支払い方法セクション -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title fade-zoom-in">
+          <h2>お支払い方法</h2>
+          <p>各種お支払い方法をご案内します。</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <p>現金、各種クレジットカード、銀行振込でのお支払いが可能です。<br>
+          <strong>クレジット決済可能</strong>です。お気軽にご利用ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社概要セクション -->
+    <section class="section features gradient-bg">
+      <div class="container">
+        <div class="section-title fade-zoom-in">
+          <h2 class="text-highlight">会社概要</h2>
+          <p>株式会社ゼータプラスの会社情報をご紹介します。</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="feature-item scroll-animate fade-in-left">
+            <div class="feature-content">
+              <h3>基本情報</h3>
+              <p>
+                会社名: 株式会社ゼータプラス<br>
+                代表取締役: 山本 由季<br>
+                所在地: 〒455-0055 愛知県名古屋市港区品川町2-49-1<br>
+                電話番号: 052-659-1001<br>
+              </p>
+            </div>
+          </div>
+          <div class="feature-item scroll-animate fade-in-left delay-1">
+            <div class="feature-content">
+              <h3>取引先</h3>
+              <p>
+                保険代理店: 損保ジャパン・東京海上<br>
+                提携ローン会社: オリエントコーポレーション・プレミア<br>
+                古物商番号: 愛知県公安委員会第541231702500号
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -404,12 +449,12 @@
           <img src="images/logo.png" alt="ゼータプラスロゴ" class="footer-logo-symbol">
           <div class="footer-logo-text">株式会社ゼータプラス</div>
         </div>
-        <p>車のことならゼータプラス。新車・中古車販売、車検対応、高価買取、外車・輸入車の取り扱い、ボディーコーティング、自動車保険など、お客様のカーライフをトータルサポートいたします。</p>
+        <p>車のことならゼータプラス。新車・中古車販売、車検対応、高価買取、ボディーコーティング、自動車保険など、お客様のカーライフをトータルサポートいたします。</p>
       </div>
       <div class="footer-contact">
         <h3>お問い合わせ</h3>
         <p><i class="fas fa-map-marker-alt"></i> 〒455-0055 愛知県名古屋市港区品川町2-49-1</p>
-        <p><i class="fas fa-phone-alt"></i> 052-XXX-XXXX</p>
+        <p><i class="fas fa-phone-alt"></i> 052-659-1001</p>
         <p><i class="fas fa-envelope"></i> info@zetaplus.co.jp</p>
         <p><i class="fas fa-clock"></i> 平日: 9:00 - 18:00 / 土曜: 9:00 - 17:00</p>
       </div>
@@ -429,7 +474,9 @@
     </div>
   </footer>
 
-  <script src="js/particles.js"></script>
+  <!-- ここからJavaScriptの読み込み -->
   <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/advanced.js"></script>
 </body>
 </html>

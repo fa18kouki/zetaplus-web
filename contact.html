@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>お問い合わせ | 株式会社ゼータプラス</title>
     <meta
@@ -9,16 +10,24 @@
       content="株式会社ゼータプラスへのお問い合わせページです。新車・中古車販売、車検、買取、ボディーコーティング、自動車保険など、お気軽にお問い合わせください。"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/particles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <!-- particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   </head>
   <body>
     <!-- ヘッダー -->
@@ -162,7 +171,7 @@
             <i class="fas fa-map-marker-alt"></i> 〒455-0055
             愛知県名古屋市港区品川町2-49-1
           </p>
-          <p><i class="fas fa-phone-alt"></i> 052-XXX-XXXX</p>
+          <p><i class="fas fa-phone-alt"></i> 052-659-1001</p>
           <p><i class="fas fa-envelope"></i> info@zetaplus.co.jp</p>
           <p>
             <i class="fas fa-clock"></i> 平日: 9:00 - 18:00 / 土曜: 9:00 - 17:00
@@ -184,7 +193,9 @@
       </div>
     </footer>
 
-    <script src="js/particles.js"></script>
+    <!-- ここからJavaScriptの読み込み -->
     <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/advanced.js"></script>
   </body>
 </html>

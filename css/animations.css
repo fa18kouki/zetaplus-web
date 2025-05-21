@@ -12,6 +12,8 @@
 
 .floating {
   will-change: transform;
+  /* 浮遊アニメーションを無効化 */
+  animation: none !important;
 }
 
 /* パーティクルキャンバススタイル */
@@ -296,6 +298,8 @@
 .glowing {
   position: relative;
   overflow: hidden;
+  /* 光るアニメーションを無効化 */
+  animation: none !important;
 }
 
 @keyframes glow {

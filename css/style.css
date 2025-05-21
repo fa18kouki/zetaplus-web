@@ -9,8 +9,8 @@
   --accent-color: #f8f8f8; /* アクセントカラー（薄いグレー） */
   --text-color: #333333; /* テキストカラー */
   --light-color: #ffffff; /* 白色 */
-  --font-family-base: 'Zen Kaku Gothic New', sans-serif; /* 基本フォント */
-  --font-family-heading: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; /* 見出しフォント (日本語も考慮) */
+  --font-family-base: 'Noto Sans JP', sans-serif; /* 基本フォント */
+  --font-family-heading: 'Roboto', 'Noto Sans JP', sans-serif; /* 見出しフォント (日本語も考慮) */
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* 共通シャドウを少し強調 */
   --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.12); /* ホバー時のシャドウ */
   --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* スムーズなトランジション */
@@ -93,7 +93,8 @@ header {
   font-size: 1.6rem; /* 少し大きく */
   font-weight: bold;
   color: var(--secondary-color);
-  font-family: var(--font-family-heading); /* 見出しフォント適用 */
+  font-family: 'Exo 2', var(--font-family-heading); /* ロゴに合わせたフォント */
+  letter-spacing: 0.5px; /* 文字間隔を少し広く */
 }
 
 /* ナビゲーションスタイル */
@@ -114,6 +115,8 @@ nav ul li a {
   font-size: 1.05rem; /* フォントサイズを大きく */
   transition: var(--transition);
   position: relative; /* 下線アニメーションの基準点 */
+  font-family: 'Exo 2', var(--font-family-base); /* ヘッダーメニューのフォント */
+  letter-spacing: 0.3px; /* 文字間隔を少し広く */
 }
 
 nav ul li a:hover {
@@ -124,15 +127,28 @@ nav ul li a:hover {
 .menu-toggle {
   display: none;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .bar {
   display: block;
-  width: 28px; /* 少し太く */
+  width: 30px; /* 太く */
   height: 3px;
-  margin: 6px auto; /* 間隔を調整 */
+  margin: 6px 0; /* 縦の間隔を調整 */
   background-color: var(--secondary-color);
-  transition: var(--transition);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
 }
 
 /* メインコンテンツスタイル */
@@ -143,11 +159,15 @@ main {
 
 /* ヒーローセクションスタイル */
 .hero {
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--light-color) 100%); /* グラデーション背景 */
-  padding: 120px 0; /* パディングを増やす */
+  background: #ffffff; /* 白色背景に変更 */
+  padding: 120px 0; /* パディングを維持 */
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+
+.hero .container {
+  text-align: center;
 }
 
 .hero-content {
@@ -331,10 +351,10 @@ main {
 
 /* 特徴セクションスタイル */
 .features {
+  background: #ffffff; /* 白色背景に変更 */
   position: relative;
-  z-index: 1;
+  padding: 80px 0;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--light-color) 0%, var(--accent-color) 100%); /* 背景グラデーション反転 */
 }
 
 .feature-item {
@@ -495,7 +515,8 @@ footer {
   font-size: 1.3rem; /* 少し大きく */
   font-weight: bold;
   color: var(--light-color);
-  font-family: var(--font-family-heading); /* フッターロゴにも */
+  font-family: 'Exo 2', var(--font-family-heading); /* ロゴに合わせたフォント */
+  letter-spacing: 0.5px; /* 文字間隔を少し広く */
 }
 
 .footer-contact p {
@@ -660,222 +681,6 @@ section > .container {
   transition-delay: 0.6s;
 }
 
-/* レスポンシブデザイン */
-@media screen and (max-width: 992px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center; /* 中央揃え */
-  }
-  
-  .hero-text {
-    flex: none;
-    width: 100%;
-    text-align: center;
-    animation: slideInUp 1s ease-out forwards; /* アニメーション変更 */
-  }
-  
-  .hero-image {
-    flex: none;
-    width: 80%; /* 少し小さく */
-    margin-top: 40px; /* 上マージン追加 */
-    animation: zoomIn 1.2s ease-out 0.3s forwards; /* アニメーション変更 */
-  }
-  
-  .contact-container {
-    flex-direction: column;
-  }
-  
-  .contact-form {
-    flex: 1; /* 幅リセット */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    z-index: 1001; /* ナビゲーションより手前に */
-    position: relative; /* トグルアニメーションのため */
-    margin-right: 10px; /* 右側に少し余白 */
-  }
-  
-  nav ul {
-    position: fixed;
-    top: 0; /* ヘッダーの上から */
-    left: -100%;
-    width: 80%; /* 画面幅の80% */
-    max-width: 300px; /* 最大幅 */
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.98); /* 背景色 */
-    backdrop-filter: blur(5px);
-    flex-direction: column;
-    align-items: flex-start; /* 左揃え */
-    justify-content: flex-start;
-    padding: 100px 30px 30px; /* 上にスペース、左右パディング */
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* スムーズな動き */
-    z-index: 1000; /* ヘッダーのすぐ下 */
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* 右側に影 */
-    transform: translateX(-100%);
-  }
-  
-  nav ul.active {
-    left: 0;
-    transform: translateX(0); /* 左から表示 */
-  }
-  
-  nav ul li {
-    margin: 0 0 25px 0; /* 下マージンのみ */
-    width: 100%; /* 幅いっぱい */
-  }
-  
-  nav ul li a {
-      font-size: 1.1rem; /* 文字サイズ調整 */
-      padding-bottom: 10px; /* 下線とのスペース */
-      display: block; /* ブロック要素にして幅を持たせる */
-  }
-  
-  .menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px); /* Xの位置調整 */
-  }
-  
-  .menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-    transform: scale(0); /* 縮小して消える */
-  }
-  
-  .menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -7px); /* X,Yの位置調整 */
-  }
-  
-  main {
-    margin-top: 70px; /* ヘッダー高さに合わせて調整 */
-  }
-  
-  .section {
-    padding: 80px 0; /* パディング調整 */
-  }
-  
-  .section-title h2 {
-    font-size: 2rem; /* タイトルサイズ調整 */
-  }
-  
-  .hero {
-    padding: 80px 0; /* パディング調整 */
-  }
-  
-  .hero-title {
-    font-size: 2.5rem; /* タイトルサイズ調整 */
-  }
-  
-  .feature-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .feature-icon {
-    margin-right: 0;
-    margin-bottom: 15px;
-  }
-  
-  /* モバイルでのパーティクル調整 */
-  .particle-canvas {
-    opacity: 0.5;
-  }
-  
-  /* モバイルでの浮遊アニメーション調整 */
-  .floating {
-    animation-duration: 2s;
-  }
-  
-  /* スクロールトップボタン位置調整 */
-  .scroll-top-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .header-container {
-    padding: 10px 15px; /* パディング調整 */
-  }
-  
-  .logo-symbol {
-    width: 45px; /* サイズ調整 */
-    height: 45px; /* サイズ調整 */
-    margin-right: 10px; /* マージン調整 */
-  }
-  
-  .logo-text {
-    font-size: 1.3rem; /* サイズ調整 */
-  }
-  
-  .hero {
-      padding: 60px 0;
-  }
-  
-  .hero-title {
-    font-size: 2.2rem; /* サイズ調整 */
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem; /* サイズ調整 */
-  }
-  
-  .btn {
-    padding: 12px 25px; /* パディング調整 */
-    font-size: 1rem; /* サイズ調整 */
-  }
-  
-  .section-title h2 {
-    font-size: 1.8rem; /* サイズ調整 */
-  }
-  
-  .section-title p {
-    font-size: 1rem;
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr; /* 1カラムに */
-    gap: 30px; /* ギャップ調整 */
-  }
-  
-  .service-card {
-      text-align: center;
-  }
-  
-  .service-image {
-      height: 200px;
-  }
-  
-  .footer-container {
-      grid-template-columns: 1fr; /* 1カラムに */
-      text-align: center; /* 中央揃え */
-  }
-  
-  .footer-logo, .footer-contact p {
-      justify-content: center; /* 中央揃え */
-  }
-  
-  .footer-contact i {
-      margin-right: 8px;
-      margin-top: 3px;
-  }
-  
-  .footer-links ul {
-      padding-left: 0;
-  }
-  .footer-links ul li a:hover {
-      padding-left: 0; /* スマホではずらす効果をなくす */
-  }
-  
-  /* 小さい画面でのアニメーション調整 */
-  .scroll-animate, .fade-in {
-    transition-duration: 0.6s;
-  }
-}
-
 /* パーティクルキャンバススタイル */
 .particle-canvas {
   position: absolute;
@@ -885,4 +690,11 @@ section > .container {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+}
+
+/* gradient-bgクラスの背景を白に変更 */
+.gradient-bg {
+  background: #ffffff; /* グラデーションを白色に変更 */
+  position: relative;
+  overflow: hidden;
 }

@@ -1,0 +1,223 @@
+/* 株式会社ゼータプラス - パーティクルとインタラクティブ背景アニメーション */
+
+/* パーティクル背景 */
+.particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 幾何学模様のアニメーション背景 */
+.geometric-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.geometric-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: float-around 15s infinite ease-in-out;
+  opacity: 0.1;
+}
+
+.geometric-shape:nth-child(1) {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -100px;
+  animation-duration: 45s;
+  background: linear-gradient(45deg, var(--primary-color), transparent);
+}
+
+.geometric-shape:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  top: 30%;
+  right: -100px;
+  animation-duration: 35s;
+  animation-delay: 2s;
+  border-radius: 30%;
+  background: linear-gradient(-45deg, var(--secondary-color), transparent);
+}
+
+.geometric-shape:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 20%;
+  animation-duration: 40s;
+  animation-delay: 5s;
+  border-radius: 20%;
+  background: radial-gradient(var(--primary-color), transparent);
+}
+
+@keyframes float-around {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+  33% {
+    transform: translateY(100px) translateX(100px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(-50px) translateX(50px) rotate(240deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(360deg);
+  }
+}
+
+/* 流れる背景グラデーション */
+.gradient-flow-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    125deg,
+    rgba(92, 189, 185, 0.05),
+    rgba(92, 189, 185, 0.02) 30%,
+    rgba(51, 51, 51, 0.02) 70%,
+    rgba(51, 51, 51, 0.05)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 浮遊する円形要素 */
+.floating-circles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  opacity: 0.05;
+  animation: circle-float 20s infinite ease-in-out;
+}
+
+.floating-circle:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 10%;
+}
+
+.floating-circle:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 40%;
+  right: 15%;
+  animation-delay: 3s;
+  animation-duration: 15s;
+}
+
+.floating-circle:nth-child(3) {
+  width: 80px;
+  height: 80px;
+  bottom: 25%;
+  left: 20%;
+  animation-delay: 7s;
+  animation-duration: 18s;
+}
+
+.floating-circle:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  bottom: 10%;
+  right: 25%;
+  animation-delay: 5s;
+  animation-duration: 22s;
+}
+
+@keyframes circle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(10px) translateX(20px);
+  }
+  75% {
+    transform: translateY(15px) translateX(-10px);
+  }
+}
+
+/* 3Dカードティルト効果 */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  transition: transform 0.5s ease;
+}
+
+.tilt-card-inner {
+  transform: translateZ(20px);
+  transition: transform 0.5s ease;
+}
+
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+.tilt-card:hover .tilt-card-inner {
+  transform: translateZ(30px);
+}
+
+/* ホバーアクセント効果 */
+.hover-accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.hover-accent:hover::before {
+  left: 100%;
+} 
